@@ -1,0 +1,15 @@
+-- PHOTOS USER IS TAGGED IN
+SELECT pid, src_big, place_id
+FROM photo
+WHERE pid IN(
+    SELECT pid  
+    FROM photo_tag
+    WHERE subject = 100000165801613
+) AND place_id > 1
+order by created desc
+
+-- USER POSTED PHOTOS
+SELECT pid, src_big, place_id FROM photo WHERE owner = 100000165801613 and place_id > 1
+
+-- GETTING LAT, LONG FROM PHOTOS
+SELECT latitude, longitude FROM place where place_id in #photos
